@@ -36,10 +36,10 @@ class SocialCardController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store($id, Request $request)
     {
         $user = "1";
-        $board = "2";
+        $board = $id;
 
         $card = new SocialCard;
         $card->reference = $card->removeScript($request->reference);

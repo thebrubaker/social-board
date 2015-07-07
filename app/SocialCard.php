@@ -19,14 +19,6 @@ class SocialCard extends Model
      * @var string
      */
     protected $table = 'social_cards';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['url', 'type'];
-
     
     public function user() {
     	return $this->hasOne('App\User');
@@ -38,6 +30,7 @@ class SocialCard extends Model
 
     public function removeScript($html) {
         $doc = new \DOMDocument();
+        libxml_use_internal_errors(true);
         $doc->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $script_tags = $doc->getElementsByTagName('script');
         $length = $script_tags->length;

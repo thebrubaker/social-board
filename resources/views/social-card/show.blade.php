@@ -1,4 +1,17 @@
+{{-- Social Card Show --}}
+
 @extends('main.layout')
+
+@section('navbar')
+	<span class="navbar-brand"><a href="{{url()}}">Social Board</a></span>
+	<form class="navbar-form navbar-right" role="form" method="POST" action="board" enctype="multipart/form-data">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Enter a name" name="name">{{ old('name') }}</input>
+		</div>
+    	<button type="submit" class="btn btn-default">Add Board</button>
+    </form>
+@endsection
 
 @section('content')
 <div class="container">

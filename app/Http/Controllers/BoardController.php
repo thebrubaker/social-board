@@ -19,7 +19,7 @@ class BoardController extends Controller
     public function index()
     {
         $boards = Board::all();
-        return view('board.show', compact('boards'));
+        return view('board.index', compact('boards'));
     }
 
     /**
@@ -45,6 +45,8 @@ class BoardController extends Controller
         $board->name = $name;
         $board->user_id = $user;
         $board->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +58,7 @@ class BoardController extends Controller
     public function show($id)
     {
         $board = Board::find($id);
-        $cards = SocialCard::where('board_id', '=', '2')->get();
+        $cards = SocialCard::where('board_id', '=', $id)->get();
         return view('board.show', compact(['cards', 'board']));
     }
 

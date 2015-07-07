@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
-<div id="fb-root"></div>
+	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];
 	if (d.getElementById(id)) return;
@@ -34,7 +34,18 @@
 	return t;
 	}(document, "script", "twitter-wjs"));</script>
 
-	@yield('content')
+	<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				@yield('navbar')
+			</div>
+		</nav>
+
+		@yield('content')
+
+	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

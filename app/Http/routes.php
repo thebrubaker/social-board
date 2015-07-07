@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return "test";
+    return redirect('board');
 });
 
 Route::resource('board', 'BoardController');

@@ -1,26 +1,25 @@
+{{-- Board.Show --}}
+
 @extends('main.layout')
 
+@section('navbar')
+	<span class="navbar-brand"><a href="{{url()}}">Social Board</a> / {{$board->name}}</span>
+	<form class="navbar-form navbar-right" role="form" method="POST" action="{{$board->id}}/social-card" enctype="multipart/form-data">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Embed code..." name="reference">{{ old('reference') }}</input>
+		</div>
+    	<button type="submit" class="btn btn-default">Add Card</button>
+    </form>
+@endsection
+
 @section('content')
-<div class="container">
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">{{$board->name}}</a>
-			<form class="navbar-form navbar-right" role="form" method="POST" action="{{$board->id}}/social-card" enctype="multipart/form-data">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Embed Code" name="reference">{{ old('reference') }}</input>
-				</div>
-		    	<button type="submit" class="btn btn-default">Add Card</button>
-		    </form>
-		</div>
-	</nav>
-	<div id="social-cards" class="grid-container">
-		@foreach ($cards as $card)
-		<div class="sub-grid">
-			{!!$card->reference!!}
-		</div>
-		@endforeach
+<div id="social-cards" class="grid-container">
+	@foreach ($cards as $card)
+	<div class="sub-grid">
+		{!!$card->reference!!}
 	</div>
+	@endforeach
 </div>
 
 <style type="text/css" media="screen">
