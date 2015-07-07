@@ -15,9 +15,9 @@ class SocialCardController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($boardId)
     {
-        $cards = SocialCard::all();
+        $cards = SocialCard::where('board_id', '=', $boardId)->get();
         return view('social-card.show', compact('cards'));
     }
 
@@ -42,13 +42,12 @@ class SocialCardController extends Controller
         $board = "2";
 
         $card = new SocialCard;
-        $card->url = $request->url;
-        $card->type = $request->type;
+        $card->reference = $card->removeScript($request->reference);
         $card->user_id = $user;
-        $card->boards_id = $board;
+        $card->board_id = $board;
         $card->save();
 
-        return redirect('social-card');
+        return redirect()->back();
     }
 
     /**

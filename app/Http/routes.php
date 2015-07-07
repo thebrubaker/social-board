@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('board', 'BoardController');
-Route::resource('social-card', 'SocialCardController');
+Route::resource('board/{id}/social-card', 'SocialCardController');

@@ -35,4 +35,16 @@ class SocialCard extends Model
     public function board() {
     	return $this->hasOne('App\Board');
     }
+
+    public function removeScript($html) {
+        $doc = new \DOMDocument();
+        $doc->loadHTML($html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $script_tags = $doc->getElementsByTagName('script');
+        $length = $script_tags->length;
+        for ($i = 0; $i < $length; $i++) {
+          $script_tags->item($i)->parentNode->removeChild($script_tags->item($i));
+        }
+        $html = $doc->saveHTML();
+        return $html;
+    }
 }

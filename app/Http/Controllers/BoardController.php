@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Board;
+use App\SocialCard;
 
 class BoardController extends Controller
 {
@@ -54,7 +55,9 @@ class BoardController extends Controller
      */
     public function show($id)
     {
-        //
+        $board = Board::find($id);
+        $cards = SocialCard::where('board_id', '=', '2')->get();
+        return view('board.show', compact(['cards', 'board']));
     }
 
     /**
