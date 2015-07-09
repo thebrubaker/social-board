@@ -35,6 +35,9 @@
 	}(document, "script", "twitter-wjs"));</script>
 
 	<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+	<script async src="https://secure.assets.tumblr.com/post.js"></script>
+	<script src="https://platform.vine.co/static/scripts/embed.js"></script>
+	<script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
 
 	<div class="container">
 		<nav class="navbar navbar-default">

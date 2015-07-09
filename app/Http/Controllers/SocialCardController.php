@@ -58,7 +58,7 @@ class SocialCardController extends Controller
      */
     public function show($id)
     {
-        //
+        dd('Testing ' . $id);
     }
 
     /**
@@ -69,7 +69,7 @@ class SocialCardController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('Testing ' . $id);
     }
 
     /**
@@ -80,7 +80,7 @@ class SocialCardController extends Controller
      */
     public function update($id)
     {
-        //
+        dd('Testing ' . $id);
     }
 
     /**
@@ -91,6 +91,12 @@ class SocialCardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('Testing ' . $id);
+        $card = SocialCard::find($id);
+        dd($card);
+        if($card) {
+            $card->delete();
+        }
+        return redirect()->back();
     }
 }

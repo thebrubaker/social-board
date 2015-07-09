@@ -46,7 +46,7 @@ class BoardController extends Controller
         $board->user_id = $user;
         $board->save();
 
-        return redirect()->back();
+        return redirect('board/' . $board->id);
     }
 
     /**

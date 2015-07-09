@@ -17,6 +17,11 @@
 <div id="social-cards" class="grid-container">
 	@foreach ($cards as $card)
 	<div class="sub-grid">
+		{{-- <div class="remove-card">
+			<form action="/social-card/{{$card->id}}" method="delete">
+				<button type="submit" class="btn btn-primary">Delete</button>
+			</form>
+		</div> --}}
 		{!!$card->reference!!}
 	</div>
 	@endforeach
