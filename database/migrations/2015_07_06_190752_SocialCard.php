@@ -18,7 +18,7 @@ class SocialCard extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('board_id')->unsigned();
             $table->foreign('board_id')->references('id')->on('boards');
-            $table->string('reference');
+            $table->longText('reference');
             $table->timestamps();
             $table->softDeletes();
         });
