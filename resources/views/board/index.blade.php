@@ -24,11 +24,22 @@
 			@foreach ($boards as $board)
 				<li class="list-group-item">
 					<a href="board/{{$board->id}}">{{$board->name}}</a>
+					<form class="board-delete" action="{{route('board.destroy', ['id' => $board->id])}}" method="post">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_method" value="DELETE">
+						<button type="submit" class="btn btn-xs btn-danger">X</button>
+					</form>
 				</li>
 			@endforeach
 			</ul>
 		</div>
 	</div>
 </div>
+
+<style type="text/css" media="screen">
+.board-delete {
+	float: right;
+}
+</style>
 
 @endsection

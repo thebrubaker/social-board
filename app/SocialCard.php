@@ -3,15 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class SocialCard extends Model
 {
+    use SoftDeletes;
+
     /**
      * This model is set up for soft deleting
      *
-     * @var boolean
+     * @var array
      */
-    protected $softDelete = true;
+    protected $dates = ['deleted_at'];
 
     /**
      * The database table used by the model.

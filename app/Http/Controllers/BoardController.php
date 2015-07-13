@@ -92,6 +92,16 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $board = Board::find($id);
+        $cards = SocialCard::where('board_id', '=', $id)->get();
+        if($cards) {
+            foreach($cards as $card) {
+                $card->delete();
+            }
+        }
+        if($board) {
+            $board->delete();
+        }
+        return redirect('board');
     }
 }
