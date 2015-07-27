@@ -8,9 +8,7 @@
 	<link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 </head>
 <body>
-	{{-- Pre-loaded Scripts --}}
-	@include('partials.pre-scripts')
-	
+
 	{{-- Navbar Section --}}
 	@yield('nav')
 
@@ -22,6 +20,9 @@
 	
 	{{-- Post-loaded scripts --}}
 	@include('partials.post-scripts')
+
+	{{-- Pre-loaded Scripts --}}
+	@include('partials.pre-scripts')
 
 </body>
 </html>

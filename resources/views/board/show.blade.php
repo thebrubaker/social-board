@@ -9,58 +9,58 @@
 @stop
 
 @section('content')
-<div class="container">
-<div id="social-cards" class="cards col-sm-4">
-	@foreach ($cards->all() as $key => $card)
-		@if(($key + 2) % 3 == 0)
-		<div class="card">
-			{!!$card->reference!!}
-			<div id="board-options">
-				<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li><a href="{{ url('card/destroy/' . $card->id)}}">Delete</a></li>
-				</ul>
+<div id="social-cards" class="container">
+	<div class="col-md-4">
+		@foreach ($cards->all() as $key => $card)
+			@if(($key + 2) % 3 == 0)
+			<div class="card">
+				{!!$card->reference!!}
+				<div class="card-options">
+					<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li><a href="{{ url('card/destroy/' . $card->id)}}">Delete</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-		@endif
-	@endforeach
-</div>
-<div id="social-cards" class="cards col-sm-4">
-	@foreach ($cards->all() as $key => $card)
-		@if(($key + 1) % 3 == 0)
-		<div class="card">
-			{!!$card->reference!!}
-			<div id="board-options">
-				<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li><a href="{{ url('card/destroy/' . $card->id)}}">Delete</a></li>
-				</ul>
+			@endif
+		@endforeach
+	</div>
+	<div class="col-md-4">
+		@foreach ($cards->all() as $key => $card)
+			@if(($key + 1) % 3 == 0)
+			<div class="card">
+				{!!$card->reference!!}
+				<div class="card-options">
+					<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li><a href="{{ url('card/destroy/' . $card->id)}}">Delete</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-		@endif
-	@endforeach
-</div>
-<div id="social-cards" class="cards col-sm-4">
-	@foreach ($cards->all() as $key => $card)
-		@if($key % 3 == 0)
-		<div class="card">
-			{!!$card->reference!!}
-			<div id="board-options">
-				<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li><a href="{{ url('card/destroy/' . $card->id)}}">Delete</a></li>
-				</ul>
+			@endif
+		@endforeach
+	</div>
+	<div class="col-md-4">
+		@foreach ($cards->all() as $key => $card)
+			@if($key % 3 == 0)
+			<div class="card">
+				{!!$card->reference!!}
+				<div class="card-options">
+					<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li><a href="{{ url('card/destroy/' . $card->id)}}">Delete</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-		@endif
-	@endforeach
-</div>
+			@endif
+		@endforeach
+	</div>
 </div>
 
 @endsection

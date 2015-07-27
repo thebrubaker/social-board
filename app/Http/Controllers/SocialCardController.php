@@ -10,6 +10,17 @@ use App\SocialCard;
 
 class SocialCardController extends Controller
 {
+
+    /**
+     * Create a new card controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

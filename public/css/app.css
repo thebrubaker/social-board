@@ -6015,12 +6015,27 @@ body {
 .board-delete {
   float: right; }
 
-#board-options {
+.board-options {
   float: right; }
-  #board-options .dropdown-menu {
-    right: 0;
-    left: auto; }
-  #board-options .btn-xs, #board-options .btn-group-xs > .btn {
-    line-height: 1; }
+
+.dropdown-menu {
+  right: 0;
+  left: auto; }
+
+.btn-xs, .btn-group-xs > .btn {
+  line-height: 1; }
+
+.card-options {
+  text-align: right;
+  position: relative; }
+
+.card {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #DDD;
+  border-radius: 5px; }
+
+#fb-root, iframe {
+  overflow: hidden; }
 
 /*# sourceMappingURL=app.css.map */

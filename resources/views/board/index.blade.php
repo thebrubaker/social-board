@@ -17,7 +17,7 @@
 			@foreach ($owned as $board)
 				<li class="list-group-item">
 					<a href="board/{{$board->id}}">{{$board->name}}</a>
-					<div id="board-options">
+					<div class="board-options">
 						<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
 						</button>
@@ -39,7 +39,7 @@
 			@foreach ($public as $board)
 				<li class="list-group-item">
 					<a href="board/{{$board->id}}">{{$board->name}}</a>
-					<div id="board-options">
+					<div class="board-options">
 						<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
 						</button>

@@ -26,14 +26,31 @@ body {
 	float: right;
 }
 
-#board-options {
+.board-options {
   	float: right;
-  	.dropdown-menu {
-  		right: 0;
-  		left: auto;
-  	}
-  	.btn-xs {
-  		line-height: 1;
-  	}
+}
+
+.dropdown-menu {
+	right: 0;
+	left: auto;
+}
+.btn-xs {
+	line-height: 1;
+}
+
+.card-options {
+	text-align: right;
+	position: relative;
+}
+
+.card {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+}
+
+#fb-root, iframe {
+    overflow: hidden;
 }
 
