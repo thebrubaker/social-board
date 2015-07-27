@@ -38,7 +38,7 @@ class SocialCardController extends Controller
      */
     public function store(Request $request)
     {
-        $user = "1";
+        $user = \Auth::user()->id;
         $board = $request->id;
 
         $card = new SocialCard;
@@ -47,6 +47,7 @@ class SocialCardController extends Controller
         $card->board_id = $board;
         $card->save();
 
+        flash()->success('Your card has been added.');
         return redirect()->back();
     }
 
@@ -92,9 +93,18 @@ class SocialCardController extends Controller
     public function destroy($id)
     {
         $card = SocialCard::find($id);
+        if(!isset($card)) {
+            flash()->error('The card you are trying to delete has already been deleted or does not exist.');
+            return redirect('/dashboard');
+        }
+        if($card->user_id !== auth()->user()->id) {
+            flash()->error('You cannot delete a card you do not own.');
+            return redirect('/dashboard');
+        }
         if($card) {
             $card->delete();
         }
+        flash()->error('The card has been removed.');
         return redirect()->back();
     }
 }

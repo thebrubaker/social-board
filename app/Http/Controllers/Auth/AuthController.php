@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Board;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -34,6 +35,14 @@ class AuthController extends Controller
     }
 
     /**
+     * Redirect paths for authentication and registration
+     * @var string
+     * @var string
+     */
+    protected $redirectPath = '/dashboard';
+    protected $redirectAfterLogout = "/";
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -44,7 +53,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -62,4 +71,14 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Show the welcome screen for new users
+     * @return \Illuminate\View
+     */
+    public function welcome() 
+    {
+        return view('auth.welcome');
+    }
+
 }

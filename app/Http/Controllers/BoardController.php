@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,15 +12,15 @@ use App\SocialCard;
 
 class BoardController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Create a new board controller instance.
      *
-     * @return Response
+     * @return void
      */
-    public function index()
+    public function __construct()
     {
-        $boards = Board::all();
-        return view('board.index', compact('boards'));
+        $this->middleware('auth', ['only' => ['create', 'destroy', 'store']]);
     }
 
     /**
@@ -39,13 +40,14 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        $user = "1";
+        $user = Auth::user();
         $name = $request->name;
         $board = new Board;
         $board->name = $name;
-        $board->user_id = $user;
+        $board->user_id = $user->id;
         $board->save();
 
+        flash()->success('Your board "' . $board->name . '" has been created!');
         return redirect('board/' . $board->id);
     }
 
@@ -93,6 +95,14 @@ class BoardController extends Controller
     public function destroy($id)
     {
         $board = Board::find($id);
+        if(!isset($board)) {
+            \Flash::warning('The board you are trying to delete has already been deleted or does not exist.');
+            return redirect('/dashboard');
+        }
+        if($board->user_id !== Auth::user()->id) {
+            \Flash::warning('You cannot delete a board you do not own.');
+            return redirect('/dashboard');
+        }
         $cards = SocialCard::where('board_id', '=', $id)->get();
         if($cards) {
             foreach($cards as $card) {
@@ -102,6 +112,6 @@ class BoardController extends Controller
         if($board) {
             $board->delete();
         }
-        return redirect('board');
+        return redirect()->back();
     }
 }
